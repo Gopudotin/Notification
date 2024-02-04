@@ -1,9 +1,13 @@
+// src/subscriber/subscriber.module.ts
 import { Module } from '@nestjs/common';
-import { SuscriberController } from './controllers/suscriber/suscriber.controller';
-import { SuscriberService } from './services/suscriber/suscriber.service';
+import { SequelizeModule } from '@nestjs/sequelize';
+import { Subscriber } from './subscriber.entity';
+import { SubscriberController } from './controllers/suscriber/suscriber.controller';
+import { SubscriberService } from './services/suscriber/suscriber.service';
 
 @Module({
-  controllers: [SuscriberController],
-  providers: [SuscriberService]
+  imports: [SequelizeModule.forFeature([Subscriber])],
+  controllers: [SubscriberController],
+  providers: [SubscriberService],
 })
-export class SuscriberModule {}
+export class SubscriberModule {}

@@ -5,6 +5,7 @@ import { NotificationType } from './type/type.entity';
 import { TypeModule } from './type/type.module';
 import { TemplateModule } from './template/template.module';
 import { NotificationModule } from './notification/notification.module';
+import { SubscriberModule } from './suscriber/suscriber.module';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { NotificationModule } from './notification/notification.module';
       autoLoadModels: true,
       synchronize: true, 
     }),
-    TypeModule,TemplateModule,NotificationModule,
+    TypeModule,TemplateModule,NotificationModule,SubscriberModule,
   ],
   controllers: [],
   providers: [],
