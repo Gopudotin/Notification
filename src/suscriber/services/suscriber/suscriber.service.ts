@@ -1,4 +1,4 @@
-// src/subscriber/services/subscriber/subscriber.service.ts
+// src/subscriber/services/suscriber/suscriber.service.ts
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Subscriber } from 'src/suscriber/subscriber.entity';

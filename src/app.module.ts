@@ -1,11 +1,12 @@
-
+// app.module.ts
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { NotificationType } from './type/type.entity';
 import { TypeModule } from './type/type.module';
 import { TemplateModule } from './template/template.module';
 import { NotificationModule } from './notification/notification.module';
 import { SubscriberModule } from './suscriber/suscriber.module';
+import { BullModule } from '@nestjs/bull';
+import { SubNotificationModule } from './sub-notification/sub-notification.module';
 
 @Module({
   imports: [
@@ -17,9 +18,25 @@ import { SubscriberModule } from './suscriber/suscriber.module';
       password: 'hp15',
       database: 'lanware',
       autoLoadModels: true,
-      synchronize: true, 
+      synchronize: true,
     }),
-    TypeModule,TemplateModule,NotificationModule,SubscriberModule,
+
+    BullModule.forRoot({
+      redis: {
+        host: 'localhost',
+        port:6379,
+      },
+    }),
+
+    BullModule.registerQueue({
+      name: 'notificationQueue',
+    }),
+
+    TypeModule,
+    TemplateModule,
+    NotificationModule,
+    SubscriberModule,
+    SubNotificationModule,
   ],
   controllers: [],
   providers: [],

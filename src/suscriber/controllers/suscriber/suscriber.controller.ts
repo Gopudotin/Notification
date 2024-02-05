@@ -1,3 +1,4 @@
+// src/subscriber/controllers/suscriber/suscriber.controller.ts
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { Subscriber } from 'src/suscriber/subscriber.entity';
 import { SubscriberService } from 'src/suscriber/services/suscriber/suscriber.service';
@@ -22,8 +23,8 @@ export class SubscriberController {
   }
 
   @Put(':id')
-  updateSubscriber(@Param('id') id: number, @Body() updatedData: Partial<Subscriber>): Promise<[number, Subscriber[]]> {
-    return this.subscriberService.update(id, updatedData);
+  updateSubscriber(@Param('id') id: string, @Body() updatedData: Partial<Subscriber>): Promise<[number, Subscriber[]]> {
+    return this.subscriberService.update(+id, updatedData);
   }
 
   @Delete(':id')
